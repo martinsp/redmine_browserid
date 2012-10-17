@@ -1,3 +1,15 @@
-= redmine_browserid
+= Mozilla Persona/BrowserID authentication plugin for Redmine
 
-Description goes here
+This plugin adds Mozilla Persona/BrowserID authentication support for Redmine.
+
+== Requirements
+
+Currently tested with ruby 1.9.x and Redmine 2.1
+
+== Installation
+
+    cd <redmine-install-dir>/plugins
+    git clone https://github.com/martinsp/redmine_browserid.git
+
+restart redmine application
+
