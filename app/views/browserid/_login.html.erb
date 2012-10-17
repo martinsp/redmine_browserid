@@ -1,0 +1,11 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'login', plugin: 'browserid' %>
+    <%= javascript_include_tag 'https://login.persona.org/include.js' %>
+    <%= javascript_include_tag 'login', plugin: 'browserid' %>
+<% end %>
+<div class="browserid-login">
+  <%= link_to image_tag('login.png', alt: 'Login with Mozilla Persona', plugin: 'browserid'), '#', id: 'browserid-login' %>
+  <%= form_tag(login_path, id: 'browserid-login-form') do %>
+    <%= hidden_field_tag 'browserid_assertion' %>
+  <% end %>
+</div>

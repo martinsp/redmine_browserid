@@ -1,3 +1,5 @@
+require_dependency 'redmine_browserid/view_hook_listener'
+
 Redmine::Plugin.register :redmine_browserid do
   name 'Redmine Mozilla Persona/BrowserID plugin'
   author 'Martins Polakovs'
