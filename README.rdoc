@@ -11,5 +11,5 @@ Currently tested with ruby 1.9.x and Redmine 2.1
     cd <redmine-install-dir>/plugins
     git clone https://github.com/martinsp/redmine_browserid.git
 
-restart redmine application
+After installation restart redmine application
 
