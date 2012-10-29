@@ -5,12 +5,12 @@ class BrowseridController < AccountController
     if request.post?
       email = validate_assertion(params['browserid_assertion'])
       if email != false
-      user = User.find_by_mail(email)
-      if user.nil? || !user.active?
-        flash[:error] = l(:notice_account_invalid_creditentials)
-        redirect_to signin_path
-        return
-      end
+        user = User.find_by_mail(email)
+        if user.nil? || !user.active?
+          flash[:error] = l(:notice_account_invalid_creditentials)
+          redirect_to signin_path
+          return
+        end
         user.update_attribute(:last_login_on, Time.now) if user && !user.new_record?
         successful_authentication(user)
         return
