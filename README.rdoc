@@ -4,7 +4,7 @@ This plugin adds Mozilla Persona/BrowserID authentication support for Redmine.
 
 == Requirements
 
-Currently tested with ruby 1.9.x and Redmine 2.1
+Currently tested with ruby 1.9.x works with Redmine 3.4+
 
 == Installation
 
