@@ -6,14 +6,17 @@ class BrowseridController < AccountController
       email = validate_assertion(params['browserid_assertion'])
       if email != false
         user = User.find_by_mail(email)
-        if user.nil? || !user.active?
-          flash[:error] = l(:notice_account_invalid_creditentials)
-          redirect_to signin_path
-          return
+        if user.nil?
+          invalid_credentials
+        else
+          # Valid user
+          if user.active?
+            successful_authentication(user)
+          else
+            handle_inactive_user(user)
+          end
         end
-        user.update_attribute(:last_login_on, Time.now) if user && !user.new_record?
-        successful_authentication(user)
-        return
+        return # do not redirect to signin_path, redirect is already handled
       end
     end
     redirect_to signin_path
@@ -29,7 +32,7 @@ protected
        'Content-Type' => 'application/x-www-form-urlencoded',
       }
       data = "audience="+audience+"&assertion="+assertion
-      
+
       resp = http.post("/verify",data,headers)
       return false if resp.body.blank?
       begin

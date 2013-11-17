@@ -6,6 +6,7 @@
 <div class="browserid-login">
   <%= link_to image_tag('login.png', alt: 'Login with Mozilla Persona', plugin: 'redmine_browserid'), '#', id: 'browserid-login' %>
   <%= form_tag(login_path, id: 'browserid-login-form') do %>
+    <%= hidden_field_tag 'autologin', '', id: 'browserid_autologin' %>
     <%= hidden_field_tag 'browserid_assertion' %>
   <% end %>
 </div>
